@@ -1,4 +1,5 @@
 Ghenio::Application.routes.draw do
+  get 'home' => 'home#show'
   get 'login/evernote' => 'logins#evernote'
   post 'callbacks/evernote' => 'callbacks#evernote'
   # The priority is based upon order of creation: first created -> highest priority.
