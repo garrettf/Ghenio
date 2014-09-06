@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 gem 'rails', '4.1.0'
 
-gem 'evernote_oauth'
+gem 'bcrypt', '~> 3.1.7'
 gem 'coffee-rails'
+gem 'evernote_oauth'
 gem 'haml-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
@@ -10,7 +11,6 @@ gem 'pg'
 gem 'sass-rails'
 gem 'turbolinks'
 gem 'uglifier'
-
 
 group :development do
   gem 'pry-rails'
