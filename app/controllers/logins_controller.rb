@@ -7,4 +7,8 @@ class LoginsController < ApplicationController
     session[ :evernote_request_token ] = request_token
     redirect_to request_token.authorize_url
   end
+
+  def github
+
+  end
 end
