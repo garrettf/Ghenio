@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 gem 'rails', '4.1.0'
 
+gem 'evernote_oauth'
 gem 'coffee-rails'
 gem 'haml-rails'
 gem 'jbuilder'
@@ -10,12 +11,14 @@ gem 'sass-rails'
 gem 'turbolinks'
 gem 'uglifier'
 
+
 group :development do
   gem 'pry-rails'
   gem 'spring'
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'factory_girl_rails'
 end
 
