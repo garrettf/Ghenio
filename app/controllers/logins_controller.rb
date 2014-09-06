@@ -1,9 +1,10 @@
 class LoginsController < ApplicationController
-  EVERNOTE_CALLBACK_URL = 'localhost:3000/callbacks/evernote'
+  EVERNOTE_CALLBACK_URL = 'http://localhost:3000/callbacks/evernote'
   def evernote
-    request_token = EvernoteClient.client.request_token(
+    request_token = EvernoteClient.new.request_token(
       oauth_callback: EVERNOTE_CALLBACK_URL
     )
-    @authorize_url = request_token.authorize_url
+    session[ :evernote_request_token ] = request_token
+    redirect_to request_token.authorize_url
   end
 end
