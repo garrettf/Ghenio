@@ -1,6 +1,6 @@
 class CallbacksController < ApplicationController
   # Evernote callback
-  def en
-    client = EvernoteOAuth::Client.new token: params[ :oauth_token ]
+  def evernote
+    session[ :authtoken ] = request.env['omniauth.auth']['credentials']['token']
   end
 end
