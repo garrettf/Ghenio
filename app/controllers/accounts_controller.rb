@@ -18,7 +18,7 @@ class AccountsController < ApplicationController
     )
       session[ :account_id ] = account.id
       flash[ :success ] = 'Login succeeded!'
-      redirect_to '/'
+      redirect_to '/flow/status'
       # redirect_to somewhere
     else
       flash[ :error ] = 'Login failed.'

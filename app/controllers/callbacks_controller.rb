@@ -6,6 +6,9 @@ class CallbacksController < ApplicationController
     token = access_token.token
     session[ :evernote_access_token ] = token
     EvernoteAccessToken.create! token: token, account: current_account
+
+    client = EvernoteClient.new token: token
+
     redirect_to controller: "flow", action: "evernote_success"
   end
 end
