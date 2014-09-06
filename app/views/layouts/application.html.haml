@@ -9,7 +9,7 @@
   %body
     .main
       .flashes
-        = flash.each do |name, msg|
+        - flash.each do |name, msg|
           .alert{ :class => "alert-#{name}" }
             %button.close{ :data => { :dismiss => "alert" } } x
             %strong

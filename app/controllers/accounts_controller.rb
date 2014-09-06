@@ -1,10 +1,12 @@
 class AccountsController < ApplicationController
   def create
     @account = Account.new new_account_params
+    debugger
     if @account.save
-      flash[ :success ] = 'Account created successfully'
+      redirect_to '/flow/login_success'
     else
       flash[ :error ] = 'Account creation failed.'
+      redirect_to '/'
     end
   end
 

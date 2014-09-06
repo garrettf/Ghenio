@@ -1,14 +1,28 @@
-%div.headline
+.headline
   %h1 Ghenio
-  %p Description goes here
-%form{action: "login/evernote"}
-  %button.authorizeEvernote{type: "submit"}
-    Log in to Evernote
-= form_for Account.new, url: login_account_path do |f|
-  = f.label :email
-  = f.text_field :email
-  = f.label :password
-  = f.text_field :password
-  = f.label :password_confirmation
-  = f.text_field :password_confirmation
-  = f.submit 'Login'
+  %p Integrate your GitHub with Evernote.
+
+.authMethods
+  .auth.login
+    .sectionTitle Log In
+    = form_for Account.new, url: login_account_path do |f|
+      .field
+        = f.label :email
+        = f.text_field :email
+      .field
+        = f.label :password
+        = f.password_field :password
+      = f.submit 'Log In'
+  .auth.signup
+    .sectionTitle Sign Up
+    = form_for Account.new do |f|
+      .field
+        = f.label :email
+        = f.text_field :email
+      .field
+        = f.label :password
+        = f.password_field :password
+      .field
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation
+      = f.submit 'Sign Up'

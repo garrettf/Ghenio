@@ -2,6 +2,8 @@ Ghenio::Application.routes.draw do
   root 'home#show'
   get 'login/evernote' => 'logins#evernote'
   get 'callbacks/evernote' => 'callbacks#evernote'
+  get 'flow/evernote_success' => 'flow#evernote_success'
+  get 'flow/login_success' => 'flow#login_success'
 
   resource :account, only: [ :new, :create ] do
     member do
