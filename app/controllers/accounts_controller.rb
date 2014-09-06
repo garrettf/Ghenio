@@ -11,13 +11,16 @@ class AccountsController < ApplicationController
   def login
     # TODO: catch find by's exception
     if account = Account.find_by( email: login_params[ :email ] ).try(
-      :authenticte,
+      :authenticate,
       login_params[ :password ]
     )
+      session[ :account_id ] = account.id
+      flash[ :success ] = 'Login succeeded!'
+      redirect_to '/'
       # redirect_to somewhere
     else
       flash[ :error ] = 'Login failed.'
-      redirect_to :login
+      redirect_to :back
     end
   end
 
