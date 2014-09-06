@@ -1,5 +1,5 @@
 Ghenio::Application.routes.draw do
-  get '/' => 'home#show'
+  root 'home#show'
   get 'login/evernote' => 'logins#evernote'
   get 'callbacks/evernote' => 'callbacks#evernote'
 
