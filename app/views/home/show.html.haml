@@ -1,6 +1,7 @@
-%div
+%div.home
   %div.headline
     %h1 Ghenio
     %p Description goes here
-  %button#authorizeEvernote
-    Log in to Evernote
+  %form{action: "login/evernote"}
+    %button.authorizeEvernote{type: "submit"}
+      Log in to Evernote
