@@ -26,4 +26,8 @@ group :test do
   gem 'rspec-rails', '~> 3.0'
 end
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'newrelic_rpm'
+  gem 'rails_12factor', group: :production
+end
+
