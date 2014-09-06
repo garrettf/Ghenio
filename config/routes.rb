@@ -3,7 +3,7 @@ Ghenio::Application.routes.draw do
   get 'login/evernote' => 'logins#evernote'
   get 'callbacks/evernote' => 'callbacks#evernote'
 
-  resource :account, only: :new, :create do
+  resource :account, only: [ :new, :create ] do
     member do
       post :login
     end
