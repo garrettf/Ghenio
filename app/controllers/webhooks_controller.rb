@@ -7,7 +7,7 @@ class WebhooksController < ApplicationController
       note = get_note evernote_client, params[:guid]
       notebook = Notebook.find_by_evernote_guid(params[:notebookGuid])
       repo = Synchronization.find_by_notebook_id(notebook.evernote_guid).repo
-      
+
       committer = GithubCommitter.new(repo , note.title, note.content, evernote_client.account)
       committer.commit!
     end

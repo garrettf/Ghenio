@@ -1,12 +1,15 @@
 .statusSection
-  .sectionTitle Evernote <-> GitHub Connection Status
+  .headline
+    %p.success
+      Evernote <-> GitHub Connection Status
 
   .statusMessage
     You are currently:
-    %span.status
-      - if @connected
+    - if @connected
+      %span.status.green
         connected
-      - else
+    - else
+      %span.status.red
         disconnected
 
   .connectButton
