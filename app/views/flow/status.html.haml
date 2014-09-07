@@ -12,6 +12,21 @@
       %span.status.red
         disconnected
 
+  .synchronizations
+    Synchronizations:
+    %table.synchroTable
+      %tr.firstRow
+        %td
+          GitHub Repo
+        %td
+          Notebook Name
+      - @synchros.each do |synchro|
+        %tr
+          %td
+            = synchro.repo.name
+          %td
+            = synchro.notebook.name
+
   .connectButton
     - if @connected
       %form{action: "/login/disconnect"}
