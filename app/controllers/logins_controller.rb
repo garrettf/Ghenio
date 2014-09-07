@@ -1,8 +1,8 @@
 class LoginsController < ApplicationController
   before_filter :authenticate
 
-  EVERNOTE_CALLBACK_URL = 'http://localhost:3000/callbacks/evernote'
-  GITHUB_CALLBACK_URL = 'http://localhost:3000/callbacks/github'
+  EVERNOTE_CALLBACK_URL = ENV.fetch('BASE_URI') + '/callbacks/evernote'
+  GITHUB_CALLBACK_URL = ENV.fetch('BASE_URI') + '/callbacks/github'
   GITHUB_SCOPES = 'repo'
 
   def evernote
