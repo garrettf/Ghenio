@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
     @current_account ||= logged_in_account
   end
 
+  def current_evernote_client
+    @evernote_client ||= EvernoteClient.new(
+      token: current_account.evernote_access_token.token
+    )
+  end
+
   private
 
   def logged_in_account
