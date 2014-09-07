@@ -23,7 +23,7 @@ class WebhooksController < ApplicationController
 
   def get_evernote_client(userId)
     @evernote_client ||= EvernoteClient.new(
-      token: access_token_string(userID)
+      token: access_token_string(userId)
     )
   end
 
