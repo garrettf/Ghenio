@@ -11,10 +11,11 @@ class GithubCommitter
   def commit!
     # repo, message, tree
     if @account.octokit_client.create_contents(
-      repo: @repo.name,
-      path: @note_name,
-      message: 'Ghenio update!',
-      content: @note_contents
+      @repo.name, #repo
+      @note_name, #path
+      'Ghenio update!', #commit message
+      @note_contents, #file contents
+      branch: 'master'
     )
       return true
     else
