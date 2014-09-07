@@ -3,12 +3,18 @@
     %p.success Successfully logged in to GitHub.
   = form_tag synchronizations_path, method: :post do |f|
     .sectionTitle
-      Next, enter the GitHub username and repository you would like to connect to
+      Enter the GitHub username and repository you would like to connect to
     .userInfo
       = text_field_tag :repo_name, nil, placeholder: "Format: <user>/<repository>"
     .sectionTitle
-      Finally, enter the name of the notebook you would like to sync
+      Enter the name of the notebook you would like to sync
     .userInfo
       = text_field_tag :notebook_name, nil, placeholder: "Notebook name"
+    .sectionTitle
+      Finally, add this webhook into your GitHub Repository (Settings > Webhooks & services > Add webhook)
+    .userInfo
+      .webhook
+        http://ghenio.herokuapp.com/webhooks/github/
     %button.connect{type: "submit"}
       Connect
+
