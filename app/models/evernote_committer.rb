@@ -8,7 +8,7 @@ class EvernoteCommitter
     notebooks = evernote_client.note_store.listNotebooks
     notebook = notebooks.detect { |nb| nb.name == @notebook_name }
     notes = evernote_client.note_store.findNotes(access_token_string(evernoteUserId), ::Evernote::EDAM::NoteStore::NoteFilter.new(:notebookGuid => notebook.guid), 0, 10000).notes
-    note = notes.detect { |note| note.name == note_name}
+    note = notes.detect { |note| note.title == note_name}
     note.content = note_contents
     evernote_client.note_store.updateNote(access_token_string(evernoteUserId), note)
   end
