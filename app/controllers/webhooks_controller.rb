@@ -36,7 +36,7 @@ class WebhooksController < ApplicationController
     mod_arys.each do |modified|
       modified.each do |filename|
         file = client.content repo_str, path: filename
-        text = Base64.decode(file.content)
+        text = Base64.decode64(file.content)
         note_name = filename.chomp( '.html' )
         committer = EvernoteCommitter.new( synchro.notebook.name )
         committer.update_note(
