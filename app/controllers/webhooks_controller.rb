@@ -23,15 +23,14 @@ class WebhooksController < ApplicationController
   end
 
   def github
-    json = ActiveSupport::JSON.decode(request.body)
-    head :ok unless json.key?( 'repository' )
-    repo_string = json['repository']['full_name']
+    head :ok unless params.key?( 'repository' )
+    repo_string = params['repository']['full_name']
     repo = Repo.find_by_name(repo_str)
     synchro = repo.synchronization
     en_client = synchro.account.evernote_client
     en_user_id = en_client.user_store.getUser.id
     client = octokit_client_for_repo repo_string
-    mod_arys = json['commits'].map do |com|
+    mod_arys = params['commits'].map do |com|
       com[ 'modified' ]
     end
     mod_arys.each do |modified|
