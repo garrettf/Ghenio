@@ -2,6 +2,24 @@
   .sectionTitle Evernote <-> GitHub Connection Status
 
   .statusMessage
-    You are now
-      %span.status connected
+    You are currently:
+    %span.status
+      - if @connected
+        connected
+      - else
+        disconnected
+
+  .connectButton
+    - if @connected
+      %form{action: "/login/disconnect"}
+        %button.disconnect{type: "submit"}
+          Disconnect
+    - else
+      %form{action: "/login/evernote"}
+        %button.authorizeEvernote{type: "submit"}
+          Reconnect
+
+
+
+
 

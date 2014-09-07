@@ -2,6 +2,7 @@ Ghenio::Application.routes.draw do
   root 'home#show'
   get 'login/evernote' => 'logins#evernote'
   get 'login/github' => 'logins#github'
+  get 'login/disconnect' => 'logins#disconnect'
   get 'callbacks/evernote' => 'callbacks#evernote'
   get 'callbacks/github' => 'callbacks#github'
 

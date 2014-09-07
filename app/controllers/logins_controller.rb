@@ -22,4 +22,8 @@ class LoginsController < ApplicationController
     }
     redirect_to 'https://github.com/login/oauth/authorize?' + CGI.unescape(params.to_query)
   end
+
+  def disconnect
+
+  end
 end

@@ -1,4 +1,5 @@
 class FlowController < ApplicationController
-  def evernote_success
+  def status
+    @connected = true
   end
 end

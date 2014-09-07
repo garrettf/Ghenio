@@ -11,7 +11,6 @@
       .flashes
         - flash.each do |name, msg|
           .alert{ :class => "alert-#{name}" }
-            %button.close{ :data => { :dismiss => "alert" } } x
             %strong
               = msg
       = yield
