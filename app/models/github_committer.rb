@@ -10,12 +10,24 @@ class GithubCommitter
 
   def commit!
     # repo, message, tree
+    sha = nil
+    begin
+      file = @account.octokit_client.contents(
+        @repo.name,
+        path: @note_name
+      )
+      sha = file.sha
+    rescue Octokit::NotFound
+    end
+    params = { branch: 'master' }
+    params.merge! sha: sha if sha
+
     if @account.octokit_client.create_contents(
       @repo.name, #repo
       @note_name, #path
       'Ghenio update!', #commit message
       @note_contents, #file contents
-      branch: 'master'
+      params
     )
       return true
     else
