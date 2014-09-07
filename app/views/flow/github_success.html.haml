@@ -1,12 +1,11 @@
 .githubSuccess
-  %div.headline
+  .headline
     %p.success Successfully logged in to GitHub.
-  %form
+  = form_tag synchronizations_path, method: :post do |f|
     .sectionTitle
       Please enter the GitHub username and repository you would like to connect to
+      %p oh and the notebook too okay
     .githubInfo
-      = text_field_tag :github, nil, placeholder: "Format: <user>/<repository>"
-      %button.connect{type: "submit"}
-        Connect
-
-
+      = text_field_tag :repo_name, nil, placeholder: 'Format: <user>/<repository>'
+      = text_field_tag :notebook_name, nil, placeholder: 'notebook name'
+      = submit_tag

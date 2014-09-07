@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140907011229) do
+ActiveRecord::Schema.define(version: 20140907014953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +21,7 @@ ActiveRecord::Schema.define(version: 20140907011229) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "synchonization_id"
   end
-
-  add_index "accounts", ["synchonization_id"], name: "index_accounts_on_synchonization_id", using: :btree
 
   create_table "evernote_access_tokens", force: true do |t|
     t.string   "token"
@@ -42,9 +39,10 @@ ActiveRecord::Schema.define(version: 20140907011229) do
   end
 
   create_table "notebooks", force: true do |t|
-    t.integer  "evernote_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "evernote_guid"
+    t.string   "name"
   end
 
   create_table "repos", force: true do |t|
@@ -58,8 +56,10 @@ ActiveRecord::Schema.define(version: 20140907011229) do
     t.integer  "repo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
+  add_index "synchronizations", ["account_id"], name: "index_synchronizations_on_account_id", using: :btree
   add_index "synchronizations", ["notebook_id"], name: "index_synchronizations_on_notebook_id", using: :btree
   add_index "synchronizations", ["repo_id"], name: "index_synchronizations_on_repo_id", using: :btree
 

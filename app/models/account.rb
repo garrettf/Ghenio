@@ -6,6 +6,10 @@ class Account < ActiveRecord::Base
   has_one :github_access_token
 
   def octokit_client
-    @client ||= Octokit::Client.new( access_token: github_access_token.token )
+    @octokit_client ||= Octokit::Client.new( access_token: github_access_token.token )
+  end
+
+  def evernote_client
+    @evernote_client ||= EvernoteClient.new token: evernote_access_token.token
   end
 end

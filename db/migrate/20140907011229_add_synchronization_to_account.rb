@@ -1,5 +1,5 @@
 class AddSynchronizationToAccount < ActiveRecord::Migration
   def change
-    add_reference :accounts, :synchonization, index: true
+    add_reference :synchronizations, :account, index: true
   end
 end
