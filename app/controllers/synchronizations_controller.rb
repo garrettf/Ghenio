@@ -9,6 +9,6 @@ class SynchronizationsController < ApplicationController
     end.guid
     notebook = Notebook.create! name: params[ :notebook_name ], evernote_guid: guid
     Synchronization.create! repo: repo, notebook: notebook, account: current_account
-    redirect_to '/'
+    redirect_to controller: 'flow', action: 'status'
   end
 end
