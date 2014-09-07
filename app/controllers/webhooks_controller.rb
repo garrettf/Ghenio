@@ -38,7 +38,7 @@ class WebhooksController < ApplicationController
         file = client.content repo_str, path: filename
         text = Base64.decode64(file.content)
         note_name = filename.chomp( '.html' )
-        committer = EvernoteCommitter.new( synchro.notebook.name )
+        committer = EvernoteCommitter.new( notebook_name: synchro.notebook.name )
         committer.update_note(
           note_name: note_name,
           note_contents: text,
