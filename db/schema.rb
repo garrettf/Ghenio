@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140906221906) do
+ActiveRecord::Schema.define(version: 20140907002521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,5 +36,27 @@ ActiveRecord::Schema.define(version: 20140906221906) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "notebooks", force: true do |t|
+    t.integer  "evernote_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "repos", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "synchronizations", force: true do |t|
+    t.integer  "notebook_id"
+    t.integer  "repo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "synchronizations", ["notebook_id"], name: "index_synchronizations_on_notebook_id", using: :btree
+  add_index "synchronizations", ["repo_id"], name: "index_synchronizations_on_repo_id", using: :btree
 
 end
