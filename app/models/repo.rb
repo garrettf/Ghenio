@@ -1,4 +1,4 @@
 class Repo < ActiveRecord::Base
-  has_many :synchronizations
+  has_one :synchronization
   validates_presence_of :name
 end
