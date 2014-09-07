@@ -4,7 +4,7 @@ class GithubCommitter
     raise 'No account supplied' if account.nil?
     @account = account
     @repo = repo
-    @note_name = note_name
+    @note_name = note_name + '.html'
     @note_contents = note_contents
   end
 
