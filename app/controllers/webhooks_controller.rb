@@ -24,6 +24,7 @@ class WebhooksController < ApplicationController
 
   def github
     json = ActiveSupport::JSON.decode(request.body)
+    head :ok unless json.key?( 'repository' )
     repo_string = json['repository']['full_name']
     repo = Repo.find_by_name(repo_str)
     synchro = repo.synchronization
@@ -46,6 +47,7 @@ class WebhooksController < ApplicationController
         )
       end
     end
+    head :ok
   end
 
   private
