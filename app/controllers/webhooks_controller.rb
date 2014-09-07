@@ -1,14 +1,19 @@
 class WebhooksController < ApplicationController
 
   def evernote
+    head :ok unless params[ :userId ]
     evernote_client = get_evernote_client params[:userId]
 
     if params[:reason] == "create" || params[:reason] == "update"
       note = get_note evernote_client, params[:guid], params[ :userId ]
       notebook = Notebook.find_by_evernote_guid(params[:notebookGuid])
-      repo = Synchronization.find_by_notebook_id(notebook.id).repo
+      synchro = Synchronization.find_by_notebook_id(notebook.id)
+      repo = synchro.repo
 
-      committer = GithubCommitter.new(repo , note.title, note.content, evernote_client.account)
+      committer = GithubCommitter.new(repo: repo,
+                                      note_name: note.title,
+                                      note_contents: note.content,
+                                      account: synchro.account)
       committer.commit!
     end
 
