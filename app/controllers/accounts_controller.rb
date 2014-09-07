@@ -3,6 +3,8 @@ class AccountsController < ApplicationController
     @account = Account.new new_account_params
     debugger
     if @account.save
+      session[ :account_id ] = @account.id
+      flash[ :success ] = 'Login succeeded!'
       redirect_to '/flow/login_success'
     else
       flash[ :error ] = 'Account creation failed.'
