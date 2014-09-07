@@ -7,4 +7,13 @@ class CallbacksController < ApplicationController
     session[ :evernote_access_token ] = token
     EvernoteAccessToken.create! token: token, account: current_account
   end
+
+  def github
+    if GithubTokenRetriever.retrieve code: params[ :code ], account_id: current_account.id
+      redirect_to controller: 'flow', method: 'github_success'
+    else
+      flash[ :error ] = 'Github Access Token retrieval failed'
+      redirect_to '/'
+    end
+  end
 end
