@@ -12,6 +12,7 @@ Ghenio::Application.routes.draw do
   get 'flow/status' => 'flow#status'
 
   get 'webhooks/evernote/' => 'webhooks#evernote'
+  post 'webhooks/github' => 'webhooks#github'
 
   resource :account, only: [ :new, :create ] do
     member do
