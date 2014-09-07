@@ -24,18 +24,18 @@ class WebhooksController < ApplicationController
 
   def github
     head :ok unless params.key?( 'repository' )
-    repo_string = params['repository']['full_name']
+    repo_str = params['repository']['full_name']
     repo = Repo.find_by_name(repo_str)
     synchro = repo.synchronization
     en_client = synchro.account.evernote_client
     en_user_id = en_client.user_store.getUser.id
-    client = octokit_client_for_repo repo_string
+    client = octokit_client_for_repo repo_str
     mod_arys = params['commits'].map do |com|
       com[ 'modified' ]
     end
     mod_arys.each do |modified|
       modified.each do |filename|
-        file = client.content repo_string, path: filename
+        file = client.content repo_str, path: filename
         text = Base64.decode(file.content)
         note_name = filename.chomp( '.html' )
         committer = EvernoteCommitter.new( synchro.notebook.name )
