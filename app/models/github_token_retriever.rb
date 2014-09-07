@@ -1,7 +1,7 @@
 # TODO: Gemfile this
 require 'open-uri'
 class GithubTokenRetriever
-  GITHUB_CALLBACK_URL = 'http://localhost:3000/callbacks/github'
+  GITHUB_CALLBACK_URL = ENV.fetch('BASE_URI') + '/callbacks/github'
   def self.retrieve opts = {}
     slug = 'https://github.com'
     params = {
