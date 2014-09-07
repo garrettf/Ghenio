@@ -1,5 +1,5 @@
 class FlowController < ApplicationController
   def status
-    @connected = true
+    @connected = current_account.synchronizations.length > 0
   end
 end

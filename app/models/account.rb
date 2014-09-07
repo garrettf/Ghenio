@@ -4,6 +4,7 @@ class Account < ActiveRecord::Base
   has_secure_password
   has_one :evernote_access_token
   has_one :github_access_token
+  has_many :synchronizations
 
   def octokit_client
     @octokit_client ||= Octokit::Client.new( access_token: github_access_token.token )
