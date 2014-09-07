@@ -11,4 +11,13 @@ class CallbacksController < ApplicationController
 
     redirect_to controller: "flow", action: "evernote_success"
   end
+
+  def github
+    if GithubTokenRetriever.retrieve code: params[ :code ], account_id: current_account.id
+      redirect_to controller: 'flow', method: 'github_success'
+    else
+      flash[ :error ] = 'Github Access Token retrieval failed'
+      redirect_to '/'
+    end
+  end
 end

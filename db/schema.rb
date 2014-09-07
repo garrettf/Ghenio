@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140906213049) do
+ActiveRecord::Schema.define(version: 20140906221906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 20140906213049) do
   end
 
   create_table "evernote_access_tokens", force: true do |t|
+    t.string   "token"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "github_access_tokens", force: true do |t|
     t.string   "token"
     t.integer  "account_id"
     t.datetime "created_at"

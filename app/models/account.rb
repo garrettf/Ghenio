@@ -3,4 +3,5 @@ class Account < ActiveRecord::Base
 
   has_secure_password
   has_one :evernote_access_token
+  has_one :github_access_token
 end
